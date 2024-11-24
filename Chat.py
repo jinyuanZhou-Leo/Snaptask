@@ -37,7 +37,7 @@ class Chat:
         self.stream = stream
         self.model = model
 
-        logger.debug(f"System prompt: {system_prompt}, Context: {self.context}")
+        # logger.debug(f"System prompt: {system_prompt}, Context: {self.context}")
 
         if system_prompt and context:
             logger.error("System prompt is only available when there is NO context given")

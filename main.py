@@ -5,7 +5,6 @@ import time
 import os
 from utils import *
 from pathlib import Path
-import uuid
 from dotenv import load_dotenv
 from Chat import Chat
 from ClipboardListener import ClipboardListener
@@ -17,6 +16,8 @@ VERSION = "1.0.0"
 logger.remove()
 logger.add(sys.stdout, level="DEBUG", colorize=True)
 logger.info(f"Snaptask v{VERSION}")
+with Path("./system_prompt.md").open() as f:
+    system_prompt = f.read()
 
 
 def throttle(wait_time):
@@ -39,7 +40,7 @@ def extract_task(prompt) -> None:
 
     chat = Chat(
         client,
-        system_prompt="你是一个任务提取专家, user会给出一段文字, 请在其中找出任务, 并且输出一个json格式的任务列表。格式: 任务名称，任务截止日期(如有),任务备注",
+        system_prompt=system_prompt,
         stream=False,
         model=MODEL,
     )

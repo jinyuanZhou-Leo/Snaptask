@@ -1,9 +1,11 @@
 from pathlib import Path
-
 from loguru import logger
+import subprocess
+from datetime import datetime
 
 __all__ = [
     "setEnvVar",
+    "add_reminder",
 ]
 
 
@@ -41,3 +43,16 @@ def setEnvVar(key: str, value: str) -> None:
     except Exception as e:
         logger.critical(f"Unexpected error occurred while parsing '{f}'")
         raise e
+
+
+def add_reminder(name: str, dueDate: datetime):
+    """Add a reminder to the system."""
+    dueDate = dueDate.strftime("%Y-%m-%d %H:%M:%S")
+
+    script = f"""
+    tell application "Reminders"
+        make new reminder with properties {{name:"{name}", due date:(current date) + 5 * days}}
+    end tell
+    """
+
+    subprocess.run(["osascript", "-e", script])
