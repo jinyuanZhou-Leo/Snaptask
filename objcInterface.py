@@ -1,6 +1,8 @@
 from AppKit import NSPasteboard
 import time
 from loguru import logger
+import AppKit
+from PyObjCTools.AppHelper import runEventLoop
 
 
 class ClipboardListener:

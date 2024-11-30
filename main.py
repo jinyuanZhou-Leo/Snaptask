@@ -7,11 +7,11 @@ from utils import *
 from pathlib import Path
 from dotenv import load_dotenv
 from Chat import Chat
-from ClipboardListener import ClipboardListener
+from objcInterface import ClipboardListener
 
 load_dotenv()
 APIKEY: str | None = os.getenv("ZHIPU_API_KEY")
-MODEL: str = "glm-4-flash"
+MODEL: str = "glm-4-airx"
 VERSION = "1.0.0"
 logger.remove()
 logger.add(sys.stdout, level="DEBUG", colorize=True)
