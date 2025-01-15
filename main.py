@@ -30,11 +30,11 @@ platform_name = platform.system()
 if platform_name == "Windows":
     logger.debug("检测到Windows平台")
     COPY = {keyboard.Key.ctrl, keyboard.KeyCode.from_char('c')}
-    PASTE = {keyboard.Key.ctrl, keyboard.KeyCode.from_char('v')}
+    #PASTE = {keyboard.Key.ctrl, keyboard.KeyCode.from_char('v')}
 elif platform_name == "Darwin":
     logger.debug("检测到Mac平台")
     COPY = {keyboard.Key.cmd, keyboard.KeyCode.from_char('c')}
-    PASTE = {keyboard.Key.cmd, keyboard.KeyCode.from_char('v')}
+    #PASTE = {keyboard.Key.cmd, keyboard.KeyCode.from_char('v')}
 else:
     logger.critical("不支持的平台")
     sys.exit(0)
